@@ -13,9 +13,13 @@ test("returns the sum of numbers separated by commas", () => {
 });
 
 test("returns the sum of numbers separated by new lines and commas", () => {
-    expect(add("4\n5,6")).toBe(15);
+  expect(add("4\n5,6")).toBe(15);
 });
 
 test("returns the sum of numbers separated by different delimiters, new lines and commas", () => {
   expect(add("//;\n7;8")).toBe(15);
+});
+
+test("returns an exception when negative numbers are present in the input", () => {
+  expect(() => add("1,-2,3")).toThrow("Negative numbers are not allowed!");
 });
