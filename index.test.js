@@ -23,3 +23,19 @@ test("returns the sum of numbers separated by different delimiters, new lines an
 test("returns an exception when negative numbers are present in the input", () => {
   expect(() => add("1,-2,3")).toThrow("Negative numbers are not allowed!");
 });
+
+test("returns the sum of numbers while ignoring numbers greater than 1000", () => {
+  expect(add("1001,2")).toBe(2);
+});
+
+test("returns the sum of numbers separated by delimiters of any length", () => {
+  expect(add("//[***]\n1***2***3")).toBe(6);
+});
+
+test("should handle multiple delimiters", () => {
+  expect(add("//[*][%]\n1*2%3")).toBe(6);
+});
+
+test("should handle multiple delimiters with length greater than one", () => {
+  expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+});
